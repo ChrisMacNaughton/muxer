@@ -15,11 +15,7 @@ module Muxer
       responses = []
       looping = true
       EventMachine.run do
-        loop do
-          EventMachine.next_tick do
-            looping = false
-          end
-        end while looping
+        EM.stop
       end
 
       responses
