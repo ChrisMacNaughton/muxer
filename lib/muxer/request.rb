@@ -1,10 +1,12 @@
 module Muxer
   class Request
-    attr_accessor :url
+    attr_accessor :url, :timeout, :headers
     attr_reader :method
 
     def initialize
       @method = :GET
+      @timeout = nil
+      @headers = {}
     end
 
     def method=(method)

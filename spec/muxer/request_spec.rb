@@ -9,7 +9,18 @@ RSpec.describe Muxer::Request do
     expect(request.url).to eq('https://www.google.com')
   end
 
-  it 'has headers'
+  it 'has a timeout' do
+    request.timeout = 10
+
+    expect(request.timeout).to eq(10)
+  end
+
+  it 'has headers' do
+    request.headers[:api_key] = "test1234"
+
+    expect(request.headers).to be_kind_of(Hash)
+    expect(request.headers).to eq({api_key: 'test1234'})
+  end
 
   describe :method do
     it 'has a valid method' do
