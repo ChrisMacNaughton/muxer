@@ -1,5 +1,6 @@
-require "muxer/version"
+require 'muxer/version'
+require 'muxer/request'
 
 module Muxer
-  # Your code goes here...
+  
 end
