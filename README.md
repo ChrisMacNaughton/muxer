@@ -41,7 +41,10 @@ response = Muxer.execute do |muxer|
 end
 
 response[:failed] == []
-response[:succeeded] == [Muxer::Request(url: "http://www.rubydoc.info"), Muxer::Request(url: "https://www.google.com")]
+response[:succeeded] == [
+  Muxer::Request(url: "http://www.rubydoc.info"),
+  Muxer::Request(url: "https://www.google.com")
+]
 ```
 ## Contributing
 
