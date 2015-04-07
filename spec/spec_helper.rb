@@ -1,9 +1,9 @@
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 require 'vcr'
 require 'pry'
 require File.join(__FILE__, "..","..","lib","muxer")
-
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
