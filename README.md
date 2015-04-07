@@ -5,7 +5,11 @@
 [![Build](https://img.shields.io/travis-ci/ChrisMacNaughton/muxer.svg?style=flat-square)](https://travis-ci.org/ChrisMacNaughton/muxer)
 [![Dependencies](https://img.shields.io/gemnasium/ChrisMacNaughton/muxer.svg?style=flat-square)](https://gemnasium.com/ChrisMacNaughton/muxer)
 [![Downloads](https://img.shields.io/gem/dtv/muxer.svg?style=flat-square)](https://rubygems.org/gems/muxer)
-[![Tags](https://img.shields.io/github/tag/ChrisMacNaughton/muxer.svg?style=flat-square)](https://github.com/ChrisMacNaughton/muxer/tags)[![Releases](https://img.shields.io/github/release/ChrisMacNaughton/muxer.svg?style=flat-square)](https://github.com/ChrisMacNaughton/muxer/releases)[![Issues](https://img.shields.io/github/issues/ChrisMacNaughton/muxer.svg?style=flat-square)](https://github.com/ChrisMacNaughton/muxer/issues)[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://opensource.org/licenses/MIT)[![Version](https://img.shields.io/gem/v/muxer.svg?style=flat-square)](https://rubygems.org/gems/muxer)
+[![Tags](https://img.shields.io/github/tag/ChrisMacNaughton/muxer.svg?style=flat-square)](https://github.com/ChrisMacNaughton/muxer/tags)
+[![Releases](https://img.shields.io/github/release/ChrisMacNaughton/muxer.svg?style=flat-square)](https://github.com/ChrisMacNaughton/muxer/releases)
+[![Issues](https://img.shields.io/github/issues/ChrisMacNaughton/muxer.svg?style=flat-square)](https://github.com/ChrisMacNaughton/muxer/issues)
+[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/gem/v/muxer.svg?style=flat-square)](https://rubygems.org/gems/muxer)
 
 Muxer is a gem to allow web requests to run in parallel with seperate timeouts per request, in addition to an optional global timeout for all of the requests.
 
