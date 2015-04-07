@@ -23,4 +23,15 @@ RSpec.describe Muxer::Multiplexer do
       expect(response[:failed].count).to eq(0)
     end
   end
+
+  it 'kills requests with a global timeout' do
+    VCR.use_cassette('muxer/multiplexer/with_a_global_timeout') do
+      multiplexer.add_url('https://github.com/')
+      multiplexer.timeout = 0.0001
+      response = multiplexer.execute
+
+      expect(response[:succeeded].count).to eq(0)
+      expect(response[:failed].count).to eq(1)
+   end
+  end
 end

@@ -55,7 +55,7 @@ module Muxer
     end
 
     def process_timeouts
-      if @timeout && Time.now >= finish
+      if @timeout && (@start + @timeout <= Time.now)
         finish_timeouts
         return
       end
