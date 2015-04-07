@@ -16,7 +16,7 @@ RSpec.describe Muxer::Multiplexer do
   it 'lets a request wait on the longer one' do
     VCR.use_cassette('muxer/multiplexer/with_one_timeout') do
       multiplexer.add_url('https://github.com/', 0.0001)
-      multiplexer.add_url('https://github.com/', 2)
+      multiplexer.add_url('https://codeclimate.com/', 5)
       response = multiplexer.execute
 
       expect(response[:succeeded].count).to eq(2)
