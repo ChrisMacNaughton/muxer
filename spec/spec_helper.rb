@@ -34,7 +34,7 @@ RSpec.configure do |config|
   VCR.configure do |c|
     c.cassette_library_dir = 'spec/cassettes'
     c.hook_into :webmock
-    c.ignore_hosts 'codeclimate.com'
+    c.ignore_hosts 'codeclimate.com', 'github.com'
   end
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.

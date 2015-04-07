@@ -1,6 +1,7 @@
 module Muxer
   class Multiplexer
     attr_reader :requests
+    attr_writer :timeout
     def initialize
       @requests = []
       @timeout = nil
@@ -15,13 +16,13 @@ module Muxer
 
     def execute
       @responses = {succeeded: [], failed: [], pending: []}
-      @finish = Time.now + @timeout if @timeout
+      @start = Time.now
       EventMachine.run do
         requests.each do |request|
           @responses[:pending] << request.process!
         end
 
-        EM::PeriodicTimer.new(0.01) do
+        EM::PeriodicTimer.new(0.001) do
           process_requests
         end
       end
@@ -55,12 +56,21 @@ module Muxer
 
     def process_timeouts
       if @timeout && Time.now >= finish
-        @responses[:pending].each do |pending|
-          @responses[:failed] << pending
-        end
-        @responses[:pending] = []
-        EM.stop
+        finish_timeouts
+        return
       end
+      highest_remaining_timeout = @responses[:pending].map(&:timeout).max
+      if highest_remaining_timeout && (@start + highest_remaining_timeout <= Time.now)
+        finish_timeouts
+      end
+    end
+
+    def finish_timeouts
+      @responses[:pending].each do |pending|
+        @responses[:failed] << pending
+      end
+      @responses[:pending] = []
+      EM.stop
     end
   end
 end
