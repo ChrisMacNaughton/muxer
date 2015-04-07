@@ -1,5 +1,10 @@
 require 'vcr'
+require 'pry'
 require File.join(__FILE__, "..","..","lib","muxer")
+
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -28,7 +33,7 @@ RSpec.configure do |config|
 
   VCR.configure do |c|
     c.cassette_library_dir = 'spec/cassettes'
-    # c.hook_into :webmock
+    c.hook_into :webmock
   end
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
@@ -49,7 +54,7 @@ RSpec.configure do |config|
 
   # This setting enables warnings. It's recommended, but in some cases may
   # be too noisy due to issues in dependencies.
-  config.warnings = true
+  # config.warnings = true
 
   # Many RSpec users commonly either run the entire suite or an individual
   # file, and it's useful to allow more verbose output when running an

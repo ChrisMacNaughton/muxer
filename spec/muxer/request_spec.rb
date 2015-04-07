@@ -26,13 +26,13 @@ RSpec.describe Muxer::Request do
     it 'has a valid method' do
       request.method = 'POST'
 
-      expect(request.method).to eq(:POST)
+      expect(request.method).to eq(:post)
     end
 
     it 'does not have an invalid method' do
       request.method = "WRONG"
 
-      expect(request.method).to eq(:GET)
+      expect(request.method).to eq(:get)
     end
   end
 end

@@ -1,0 +1,282 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.rubydoc.info/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/html;charset=utf-8
+      Last-Modified:
+      - Tue, 07 Apr 2015 12:18:27 GMT
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Length:
+      - '19885'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 07 Apr 2015 12:40:04 GMT
+      X-Varnish:
+      - 773431391 773417265
+      Age:
+      - '1297'
+      Via:
+      - 1.1 varnish
+      Connection:
+      - close
+      X-Cache-Status:
+      - HIT
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"\n  \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n<html>\n
+        \ <head>\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"
+        />\n    <title>RubyDoc.info: Documenting RubyGems, Stdlib, and GitHub Projects</title>\n
+        \   <link rel=\"stylesheet\" href=\"/css/style.css\" type=\"text/css\" media=\"screen\"
+        charset=\"utf-8\" />\n    <link rel=\"stylesheet\" href=\"/css/custom.css\"
+        type=\"text/css\" media=\"screen\" charset=\"utf-8\" />\n    <link rel=\"stylesheet\"
+        href=\"/css/projects.css\" type=\"text/css\" media=\"screen\" charset=\"utf-8\"
+        />\n    <script type=\"text/javascript\" charset=\"utf-8\" src=\"/js/jquery.js\"></script>\n
+        \   <script type=\"text/javascript\" charset=\"utf-8\" src=\"/js/project_checkout.js\"></script>\n
+        \   <script type=\"text/javascript\">\n      function searchClick() {\n        searchPrompt
+        = $('#docSearch').val();\n\n        $('#docSearch').focus(function() {\n          if
+        ($(this).val().match(/^Search/)) {\n            $(this).val('');\n          }\n
+        \       });\n        $('#docSearch').blur(function() {\n          if ($(this).val()
+        == '') {\n            $(this).val(searchPrompt);\n          }\n        });\n
+        \     }\n\n      function aboutLink() {\n        $('#about').click(function()
+        {\n          if ($('#info').is(':hidden')) { $('#checkout').hide(); $('#tender_window').hide();
+        $('#info').fadeIn('fast'); }\n          else $('#info').fadeOut('fast');\n
+        \         return false;\n        });\n      }\n\n      function checkoutLink()
+        {\n        $('#new_checkout').click(function() {\n          if ($('#checkout').is(':hidden'))
+        { $('#info').hide(); $('#tender_window').hide(); $('#checkout').fadeIn('fast');
+        }\n          else $('#checkout').fadeOut('fast');\n          return false;\n
+        \       });\n      }\n\n      function helpLink() {\n        $('#help').click(function()
+        {\n          if ($('#tender_window').is(':visible')) {\n            $('#tender_window').hide();\n
+        \         } else {\n            $('#help_tender').click();\n            $('#info').hide();\n
+        \           $('#checkout').hide();\n          }\n        });\n      }\n\n
+        \     function reloadProject() {\n        $('.libraries .project_reload').click(function()
+        {\n          var proj = $(this).parent().find('a:first-child').text();\n          $('#url').val(\"git://github.com/\"
+        + proj);\n          $('#commit').val('');\n          $('#checkout_form').submit();\n
+        \         $(this).find('img').attr('src', '/images/loading.gif');\n          return
+        false;\n        });\n      }\n\n      function saveIndex(url) {\n        var
+        date = new Date();\n        date.setDate(date.getDate() + (url == '' ? -999
+        : 99999));\n        document.cookie = \"defaultIndex=\" + escape(url) + \";expires=\"
+        + date.toUTCString();\n      }\n\n      $(searchClick);\n      $(aboutLink);\n
+        \     $(checkoutLink);\n      $(helpLink);\n      $(reloadProject);\n    </script>\n
+        \ </head>\n  <body>\n    <img src=\"/images/logo.gif\" width=\"1\" height=\"1\"
+        style=\"display: none\" alt=\"Rubydoc.info\" />\n    <a id=\"learn_yard\"
+        href=\"http://yardoc.org\" title=\"Learn More About YARD\"><img src=\"/images/learn.png\"
+        alt=\"Learn More About YARD\" /></a>\n    <noscript>\n      <style type=\"text/css\"
+        media=\"screen\">\n        body { margin: 0; padding: 0;}\n        #logo,
+        #content { padding: 0 20px; }\n        #noscript { background: #111; color:
+        #fff; padding: 10px 20px; }\n        #top_nav { top: 48px; }\n      </style>\n
+        \     <div id=\"noscript\"><strong>It seems you've disabled Javascript.</strong>\n
+        \       That's okay, but you might run into some problems. We try to make
+        things work without script support\n        as much as possible, but sometimes
+        it needs to be used. We apologize for any inconvenience and hope you understand.</div>\n
+        \   </noscript>\n    <div id=\"logo\">\n      <h1><a href=\"/\">RubyDoc.info</a>
+        <small>YARD Documentation Server</small></h1>\n    </div>\n\n    \n      <p
+        id=\"notice\">\n        <strong>We need your help!</strong>\n        We just
+        rolled out our new frameless templates for library docs.\n        If something
+        doesn't look right on your desktop or mobile device, please\n        <a href=\"#\"
+        onclick=\"$('#help_tender').click(); return false;\">let us know</a>.\n      </div>\n
+        \   \n\n    <ul id=\"top_nav\">\n      <li><a id=\"new_checkout\" href=\"#\">Add
+        Project</a></li>\n      <li><a id=\"about\" href=\"#\">About</a></li>\n    <li><a
+        id=\"help\" href=\"#\">Help</a></li>\n    </ul>\n    <a id=\"help_tender\"
+        href=\"#\" style=\"display:none;\"></a>\n    <div class=\"clear\"></div>\n\n
+        \   <div id=\"info\">\n      <p>\n        <strong>RubyDoc.info</strong> is
+        your source for open source Ruby library documentation,\n        generating
+        fresh docs for Gems and popular Git repositories.\n      </p>\n      <p>\n
+        \       This site uses <a href=\"http://yardoc.org\">YARD</a> to generate
+        docs on the fly.\n        To make your docs look better, you can check out
+        some of YARD's\n        <a href=\"/gems/yard/file/docs/WhatsNew.md\">killer
+        features</a>.\n      </p>\n      <p>\n        <strong>We have DISQUS integration!</strong>
+        Click the <em>permalink</em>\n        (<a href=\"/gems/yard/YARD/Templates/Engine.render\">like
+        this one</a>)\n        on a method to see user comments on a method page.\n
+        \     </p>\n      <p>\n        Looking for a <a href=\"http://github.com\">GitHub</a>\n
+        \       <a href=\"http://help.github.com/post-receive-hooks/\">post-receive
+        hook</a>?\n        Use <tt>http://www.rubydoc.info/checkout</tt>.\n      </p>\n
+        \     <p>\n        <small>\n          RubyDoc.info was made possible by <strong>Loren
+        Segal</strong> and <strong>Nick Plante</strong>, with help from a <a href=\"http://groups.google.com/group/yardoc\">community</a>
+        of <a href=\"http://github.com/lsegal/rubydoc.info\">friendly contributors</a>.\n
+        \       </small>\n      </p>\n    </div>\n\n    <script type=\"text/javascript\"
+        charset=\"utf-8\">\n  $(function() {\n    if (document.referrer) {\n      var
+        refurl = document.referrer;\n      var re = new RegExp(\"^\" + window.location.protocol
+        + \"//\" + window.location.host + \"/\");\n      if (refurl.match(re)) {\n
+        \       saveIndex('');\n        return;\n      }\n    }\n\n    var list =
+        document.cookie.split(/\\s*;\\s*/);\n    for (var i = 0; i < list.length;
+        i++) {\n      var key = list[i].split('=', 1)[0];\n      if (key == 'defaultIndex')
+        {\n        var name = list[i].substr(key.length + 1);\n        window.location
+        = '/' + name;\n        saveIndex('');\n        return;\n      }\n    }\n  });\n</script>\n\n<div
+        id=\"content\">\n  <nav>\n  <ul id=\"navigation\">\n    <li><a href=\"/featured\">Featured</a></li>\n
+        \   <li><a href=\"/stdlib\">Stdlib</a></li>\n    <li><a href=\"/gems\">RubyGems</a></li>\n
+        \   <li class=\"selected\">GitHub</li>\n    <li class=\"search\"><form action=\"/find/github\"
+        method=\"GET\"><input type=\"text\" id=\"docSearch\" name=\"q\" value=\"Search
+        GitHub Projects\"/></form></li>\n  </ul>\n  </nav>\n\n  \n  <h2>Featured Libraries</h2>\n
+        \ <ul class=\"libraries\">\n    \n    <li class=\"r1\">\n      \n      \n
+        \     <a href=\"/gems/yard/0.8.7.6\">yard</a>\n      \n        <small>(0.8.7.6,\n
+        \         <a href=\"/gems/yard/0.8.7.5\">0.8.7.5</a>, <a href=\"/gems/yard/0.8.7.4\">0.8.7.4</a>,
+        <a href=\"/gems/yard/0.8.7.3\">0.8.7.3</a>, <a href=\"/gems/yard/0.8.7.2\">0.8.7.2</a>)</small>\n
+        \     \n    </li>\n    \n    <li class=\"r2\">\n      \n      \n      <a href=\"/docs/rails/4.1.7\">rails</a>\n
+        \     \n        <small>(4.1.7,\n          <a href=\"/docs/rails/4.0.0\">4.0.0</a>,
+        <a href=\"/docs/rails/3.2.8\">3.2.8</a>, <a href=\"/docs/rails/3.1.1\">3.1.1</a>,
+        <a href=\"/docs/rails/3.0.0\">3.0.0</a>)</small>\n      \n    </li>\n    \n
+        \ </ul>\n  \n\n  <h2>Recently Updated GitHub Projects</h2>\n  <ul class=\"alpha_index\">\n
+        \   \n      <li><a href=\"/github/~a\">A</a></li>\n    \n      <li><a href=\"/github/~b\">B</a></li>\n
+        \   \n      <li><a href=\"/github/~c\">C</a></li>\n    \n      <li><a href=\"/github/~d\">D</a></li>\n
+        \   \n      <li><a href=\"/github/~e\">E</a></li>\n    \n      <li><a href=\"/github/~f\">F</a></li>\n
+        \   \n      <li><a href=\"/github/~g\">G</a></li>\n    \n      <li><a href=\"/github/~h\">H</a></li>\n
+        \   \n      <li><a href=\"/github/~i\">I</a></li>\n    \n      <li><a href=\"/github/~j\">J</a></li>\n
+        \   \n      <li><a href=\"/github/~k\">K</a></li>\n    \n      <li><a href=\"/github/~l\">L</a></li>\n
+        \   \n      <li><a href=\"/github/~m\">M</a></li>\n    \n      <li><a href=\"/github/~n\">N</a></li>\n
+        \   \n      <li><a href=\"/github/~o\">O</a></li>\n    \n      <li><a href=\"/github/~p\">P</a></li>\n
+        \   \n      <li><a href=\"/github/~q\">Q</a></li>\n    \n      <li><a href=\"/github/~r\">R</a></li>\n
+        \   \n      <li><a href=\"/github/~s\">S</a></li>\n    \n      <li><a href=\"/github/~t\">T</a></li>\n
+        \   \n      <li><a href=\"/github/~u\">U</a></li>\n    \n      <li><a href=\"/github/~v\">V</a></li>\n
+        \   \n      <li><a href=\"/github/~w\">W</a></li>\n    \n      <li><a href=\"/github/~x\">X</a></li>\n
+        \   \n      <li><a href=\"/github/~y\">Y</a></li>\n    \n      <li><a href=\"/github/~z\">Z</a></li>\n
+        \   \n    <li class=\"selected\">Latest</li>\n  </ul>\n\n  <style type=\"text/css\"
+        media=\"screen\">\n  #top_nav #new_checkout { display: block; }\n</style>\n<div
+        id=\"checkout\">\n  <h2>Add your own project</h2>\n  <small class=\"example\">(eg.
+        git://github.com/lsegal/yard.git)</small>\n  <form id=\"checkout_form\" action=\"/checkout\"
+        method=\"post\">\n    <input class=\"url\" type=\"text\" id=\"url\" name=\"url\"
+        placeholder=\"git://github.com/username/project\" />\n    <div class=\"loadicon\"></div>\n
+        \   <input type=\"hidden\" id=\"scheme\" name=\"scheme\" value=\"git\" />\n
+        \   <br/>\n    <small>Commit (optional): <input type=\"text\" id=\"commit\"
+        name=\"commit\" value=\"\" /></small>\n    <input type=\"submit\" id=\"submit\"
+        value=\"Go\" />\n  </form>\n  <script type=\"text/javascript\" charset=\"utf-8\">\n
+        \   if (jQuery.browser.safari) $('#checkout_form #commit').css('width', '122px');\n
+        \ </script>\n</div>\n\n  <ul class=\"libraries\">\n    \n    \n      \n      <li>\n
+        \       <a href=\"/github/pwnall/webkit_remote/master\"><strong>pwnall/webkit_remote</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/pwnall/webkit_remote\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/fazibear/gruby/master\"><strong>fazibear/gruby</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/fazibear/gruby\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/ReactiveX/Rx.rb/master\"><strong>ReactiveX/Rx.rb</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/ReactiveX/Rx.rb\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/metaskills/pdf-writer/master\"><strong>metaskills/pdf-writer</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/metaskills/pdf-writer\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/robotarmy/acts_as_status_for/master\"><strong>robotarmy/acts_as_status_for</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/robotarmy/acts_as_status_for\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/dlt/yahoo_weatherman/master\"><strong>dlt/yahoo_weatherman</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/dlt/yahoo_weatherman\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/brickrb/brick/master\"><strong>brickrb/brick</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/brickrb/brick\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/step1profit/inde_struct/master\"><strong>step1profit/inde_struct</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/step1profit/inde_struct\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/fornellas/command_utils/master\"><strong>fornellas/command_utils</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/fornellas/command_utils\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/buren/site_mapper/master\"><strong>buren/site_mapper</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/buren/site_mapper\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/buren/wayback_archiver/master\"><strong>buren/wayback_archiver</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/buren/wayback_archiver\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/jphastings/sinatra-swagger/master\"><strong>jphastings/sinatra-swagger</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/jphastings/sinatra-swagger\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/jch/html-pipeline/master\"><strong>jch/html-pipeline</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/jch/html-pipeline\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/fractalsoft/diacritics/master\"><strong>fractalsoft/diacritics</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/fractalsoft/diacritics\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/guard/guard-compass/master\"><strong>guard/guard-compass</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/guard/guard-compass\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/locomotivecms/engine/master\"><strong>locomotivecms/engine</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/locomotivecms/engine\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/troessner/transitions/master\"><strong>troessner/transitions</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/troessner/transitions\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/kenjij/subaru/master\"><strong>kenjij/subaru</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/kenjij/subaru\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/danielpclark/PolyBelongsTo/730c15\"><strong>danielpclark/PolyBelongsTo</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/danielpclark/PolyBelongsTo\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(730c15)</small>\n      </li>\n    \n      \n      <li>\n
+        \       <a href=\"/github/mvz/ruby-gir-ffi/master\"><strong>mvz/ruby-gir-ffi</strong></a>\n
+        \       <a href=\"#\" class=\"project_reload\" title=\"Reload this project\"><img
+        class=\"icon reload\" src=\"/images/reload.png\" /></a>\n        <a href=\"http://github.com/mvz/ruby-gir-ffi\"
+        title=\"View this project on GitHub\"><img class=\"icon github\" src=\"/images/git.png\"
+        /></a>\n        <small>(master)</small>\n      </li>\n    \n  </ul>\n\n</div>\n\n\n\n
+        \   <div id=\"footer\">\n      <a href=\"http://github.com/lsegal/rubydoc.info\">RubyDoc.info</a>
+        is powered by <a href=\"http://yardoc.org/\">yard</a> 0.8.7.6 (ruby-2.1.4)\n
+        \     \n        <div class=\"sponsor\">\n          <p>Sponsored by</p>\n          \n
+        \           <a href=\"http://linode.com\"><img src=\"/images/sponsor/linode.com.png\"
+        alt=\"Sponsored by linode.com\"/></a>\n          \n            <a href=\"http://dockyard.com\"><img
+        src=\"/images/sponsor/dockyard.com.png\" alt=\"Sponsored by dockyard.com\"/></a>\n
+        \         \n        </div>\n      \n    </div>\n    \n      <script type=\"text/javascript\"
+        charset=\"utf-8\">\n        Tender = {\n          hideToggle: true,\n          widgetToggles:
+        [document.getElementById('help_tender')]\n        }\n      </script>\n      <script
+        src=\"https://rubydoc.tenderapp.com/tender_widget.js\" type=\"text/javascript\"></script>\n
+        \   \n  </body>\n\n  \n    <script src=\"http://static.getclicky.com/js\"
+        type=\"text/javascript\"></script>\n    <script type=\"text/javascript\">clicky.init(246206);</script>\n
+        \   <noscript><p><img alt=\"Clicky\" width=\"1\" height=\"1\" src=\"http://static.getclicky.com/246206ns.gif\"
+        /></p></noscript>\n  \n\n  \n    <script>\n    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\n
+        \   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n
+        \   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n
+        \   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');\n
+        \   ga('create', 'UA-7172246-5', 'auto');\n    ga('send', 'pageview');\n    </script>\n
+        \ \n</html>\n"
+    http_version: 
+  recorded_at: Tue, 07 Apr 2015 12:40:05 GMT
+recorded_with: VCR 2.9.3
