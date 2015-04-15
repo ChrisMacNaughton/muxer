@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://httpbin.org/post
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 15 Apr 2015 16:06:53 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '268'
+      Connection:
+      - close
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: "{\n  \"args\": {}, \n  \"data\": \"\", \n  \"files\": {}, \n  \"form\":
+        {}, \n  \"headers\": {\n    \"Content-Length\": \"0\", \n    \"Host\": \"httpbin.org\",
+        \n    \"User-Agent\": \"EventMachine HttpClient\"\n  }, \n  \"json\": null,
+        \n  \"origin\": \"50.204.27.94\", \n  \"url\": \"https://httpbin.org/post\"\n}\n"
+    http_version: 
+  recorded_at: Wed, 15 Apr 2015 16:06:56 GMT
+recorded_with: VCR 2.9.3

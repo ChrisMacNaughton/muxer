@@ -1,6 +1,6 @@
 module Muxer
   class Request
-    attr_accessor :url, :timeout, :headers
+    attr_accessor :url, :timeout, :headers, :params
     attr_reader :method, :completed, :error
 
     alias_method  :completed?, :completed
@@ -9,6 +9,7 @@ module Muxer
       @completed = false
       @timeout = 10
       @headers = {}
+      @params = {}
       @request = nil
       @error = nil
     end
@@ -24,8 +25,16 @@ module Muxer
         connect_timeout: timeout,
         inactivity_timeout: timeout,
       )
+      options = {
+        head: headers
+      }
+      if method == :post
+        options[:body] = params
+      else
+        options[:query] = params
+      end
       @request = http.public_send(method,
-        head: headers,
+        options
       )
 
       @request.callback { @completed = true }
@@ -34,7 +43,9 @@ module Muxer
     end
 
     def response
-      @request.response
+      if @request
+        @request.response
+      end
     end
   end
 end

@@ -7,10 +7,18 @@ module Muxer
       @timeout = nil
     end
 
-    def add_url(url, timeout = nil)
+    def add_url(url, options = {})
+      options.keys.each do |key|
+        options[key.to_sym] = options.delete(key)
+      end
+      options = {timeout: nil, method: :get, params: {}}.merge(options)
+      timeout = 
       request = Request.new
       request.url = url
-      request.timeout = timeout if timeout
+      options.each do |key, val|
+        next unless request.respond_to? ("#{key}=".to_sym)
+        request.send("#{key}=".to_sym, val) if val
+      end
       add_request request
     end
 
