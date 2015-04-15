@@ -31,46 +31,38 @@ RSpec.describe Muxer::Multiplexer do
   let(:multiplexer) { Muxer::Multiplexer.new }
 
   it 'kills requests with a timeout' do
-    # VCR.use_cassette('muxer/multiplexer/with_a_timeout') do
-      multiplexer.add_request(new_request('https://github.com/', 0.0001, 0.01))
-      response = multiplexer.execute
+    multiplexer.add_request(new_request('https://github.com/', 0.0001, 0.01))
+    response = multiplexer.execute
 
-      expect(response[:succeeded].count).to eq(0)
-      expect(response[:failed].count).to eq(1)
-   # end
+    expect(response[:succeeded].count).to eq(0)
+    expect(response[:failed].count).to eq(1)
   end
 
   it 'lets a request wait on the longer one' do
-    VCR.use_cassette('muxer/multiplexer/with_one_timeout') do
-      multiplexer.add_request(new_request('https://github.com/', 0.0001, 0.01))
-      multiplexer.add_request(new_request('https://codeclimate.com/', 2, 0.02))
-      response = multiplexer.execute
+    multiplexer.add_request(new_request('https://github.com/', 0.0001, 0.0002))
+    multiplexer.add_request(new_request('https://codeclimate.com/', 2, 0.002))
+    response = multiplexer.execute
 
-      expect(response[:succeeded].count).to eq(2)
-      expect(response[:failed].count).to eq(0)
-    end
+    expect(response[:succeeded].count).to eq(2)
+    expect(response[:failed].count).to eq(0)
   end
 
   it 'kills requests with a global timeout' do
-    VCR.use_cassette('muxer/multiplexer/with_a_global_timeout') do
-      multiplexer.add_url('https://github.com/')
-      multiplexer.timeout = 0.0001
-      response = multiplexer.execute
+    multiplexer.add_request(new_request('https://github.com/', nil, 0.002))
+    multiplexer.timeout = 0.0001
+    response = multiplexer.execute
 
-      expect(response[:succeeded].count).to eq(0)
-      expect(response[:failed].count).to eq(1)
-    end
+    expect(response[:succeeded].count).to eq(0)
+    expect(response[:failed].count).to eq(1)
   end
 
   it 'kills one of two requests with a global timeout' do
-    # VCR.use_cassette('muxer/multiplexer/with_global_timeout') do
     multiplexer.add_request(new_request('https://github.com/', nil, 1.0))
-    multiplexer.add_request(new_request('https://www.google.com/', nil, 0.001))
-    multiplexer.timeout = 0.05
+    multiplexer.add_request(new_request('https://www.google.com/', nil, 0.00001))
+    multiplexer.timeout = 0.0001
     response = multiplexer.execute
 
     expect(response[:succeeded].count).to eq(1)
     expect(response[:failed].count).to eq(1)
-    # end
   end
 end
