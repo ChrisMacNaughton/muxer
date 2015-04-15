@@ -15,7 +15,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 15 Apr 2015 16:23:02 GMT
+      - Wed, 15 Apr 2015 16:28:34 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -34,5 +34,5 @@ http_interactions:
         \   \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"EventMachine HttpClient\"\n
         \ }, \n  \"json\": null, \n  \"origin\": \"72.92.31.249\", \n  \"url\": \"https://httpbin.org/post\"\n}\n"
     http_version: 
-  recorded_at: Wed, 15 Apr 2015 16:23:05 GMT
+  recorded_at: Wed, 15 Apr 2015 16:28:37 GMT
 recorded_with: VCR 2.9.3

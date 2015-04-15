@@ -43,7 +43,7 @@ RSpec.describe Muxer, "execute" do
   end
 
   it 'can make a POST' do
-    VCR.use_cassette('muxer/can_post') do
+    VCR.use_cassette('muxer/post/can') do
       response = Muxer.execute do |muxer|
         muxer.add_url 'https://httpbin.org/post', method: :post
       end
@@ -56,9 +56,36 @@ RSpec.describe Muxer, "execute" do
   end
 
   it 'can make a POST with params' do
-    VCR.use_cassette('muxer/can_post_with_params') do
+    VCR.use_cassette('muxer/post/with_params') do
       response = Muxer.execute do |muxer|
         muxer.add_url 'https://httpbin.org/post', method: :post, params: {test: :success}
+      end
+      expect(response[:succeeded]).to be_kind_of(Array)
+      expect(response[:succeeded].count).to eq(1)
+
+      response_body = JSON.parse(response[:succeeded][0].response)
+      expect(response_body['form']).to be_kind_of(Hash)
+      expect(response_body['form']['test']).to eq('success')
+    end
+  end
+
+  it 'can make a PUT' do
+    VCR.use_cassette('muxer/put/can') do
+      response = Muxer.execute do |muxer|
+        muxer.add_url 'https://httpbin.org/put', method: :put
+      end
+      expect(response[:succeeded]).to be_kind_of(Array)
+      expect(response[:succeeded].count).to eq(1)
+
+      response_body = JSON.parse(response[:succeeded][0].response)
+      expect(response_body['form']).to eq({})
+    end
+  end
+
+  it 'can make a PUT with params' do
+    VCR.use_cassette('muxer/put/with_params') do
+      response = Muxer.execute do |muxer|
+        muxer.add_url 'https://httpbin.org/put', method: :put, params: {test: :success}
       end
       expect(response[:succeeded]).to be_kind_of(Array)
       expect(response[:succeeded].count).to eq(1)

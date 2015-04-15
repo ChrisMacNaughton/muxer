@@ -28,7 +28,7 @@ module Muxer
       options = {
         head: headers
       }
-      if method == :post
+      if [:post, :put].include? method
         options[:body] = params
       else
         options[:query] = params
