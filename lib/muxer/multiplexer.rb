@@ -11,7 +11,7 @@ module Muxer
       options.keys.each do |key|
         options[key.to_sym] = options.delete(key)
       end
-      options = {timeout: nil, method: :get, params: {}}.merge(options)
+      options = {timeout: nil, method: :get, params: {}, redirects: nil}.merge(options)
       timeout = 
       request = Request.new
       request.url = url

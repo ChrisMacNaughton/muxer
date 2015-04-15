@@ -96,5 +96,18 @@ RSpec.describe Muxer, "execute" do
     end
   end
 
+  it 'can follow redirects' do
+    VCR.use_cassette('muxer/redirects/google') do
+      response = Muxer.execute do |muxer|
+        muxer.add_url 'https://google.com', redirects: 1
+      end
+      expect(response[:succeeded]).to be_kind_of(Array)
+      expect(response[:succeeded].count).to eq(1)
+
+      body = response[:succeeded][0].response
+      expect(body).to include('<title>Google</title>')
+    end
+  end
+
 
 end
