@@ -11,6 +11,10 @@ module Muxer
       request = Request.new
       request.url = url
       request.timeout = timeout if timeout
+      add_request request
+    end
+
+    def add_request(request)
       requests << request
     end
 
