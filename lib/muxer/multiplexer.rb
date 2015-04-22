@@ -16,6 +16,18 @@ module Muxer
     #
     # m.add_url('https://www.google.com', {timeout: 3}) # gives a 3 second
     # timeout to a request to https://www.google.com
+    # 
+    # url is merely the target  URL
+    #
+    # add_url can take several options:
+    # {
+    #   timeout: nil,
+    #   method: :get,
+    #   params: {},
+    #   redirects: nil
+    # }
+    #
+    # returns true
     def add_url(url, options = {})
       options.keys.each do |key|
         options[key.to_sym] = options.delete(key)
@@ -29,6 +41,7 @@ module Muxer
         request.send("#{key}=".to_sym, val) if val
       end
       add_request request
+      true
     end
 
     # add_request adds a request to Multiplexer
@@ -37,10 +50,13 @@ module Muxer
     # request.url = 'https://www.google.com'
     # request.timeout = 3
     # m.add_request request
-
+    #
     # gives a 3 second timeout to a request to https://www.google.com
+    #
+    # returns true
     def add_request(request)
       requests << request
+      true
     end
 
     # executes the actual event loop that manages creating, sending,
