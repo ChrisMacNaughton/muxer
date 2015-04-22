@@ -3,6 +3,11 @@ module Muxer
   # web requests. Multiplexer has a lists of Muxer::Requests that will
   # be executed and added to the completed or failed response when the
   # timeouts have been reached.
+  #
+  # @!attribute requests
+  #   @return [Array] Muxer::Requests that are setup in this Multiplexer
+  # @!attribute timeout
+  #   @return [Number] Seconds for the timeout
   class Multiplexer
     attr_reader :requests
     attr_writer :timeout

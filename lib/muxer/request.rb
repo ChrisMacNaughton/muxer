@@ -1,6 +1,23 @@
 module Muxer
   # Muxer::Request is designed to wrap the requests that Muxer uses
   # to parallelize the web requests and handle timeouts.
+  #
+  # @!attribute url
+  #   @return [String] URL to use
+  # @!attribute timeout
+  #   @return [Number] Seconds for the timeout
+  # @!attribute headers
+  #   @return [Hash] Request headers to use with the request
+  # @!attribute params
+  #   @return [Hash] request parameters
+  # @!attribute redirects
+  #   @return [Integer] How many redirects to follow
+  # @!attribute method
+  #   @return [Symbol] HTTP method to use
+  # @!attribute completed
+  #   @return [Boolean] Is the request completed
+  # @!attribute error
+  #   @return [Boolean] Have we had an error?
   class Request
     attr_accessor :url, :timeout, :headers, :params, :redirects
     attr_reader :method, :completed, :error
