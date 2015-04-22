@@ -19,7 +19,7 @@ module Muxer
     # 
     # url is merely the target  URL
     #
-    # add_url can take several options:
+    # `options` is a hash describing the web request
     # {
     #   timeout: nil,
     #   method: :get,
@@ -27,7 +27,9 @@ module Muxer
     #   redirects: nil
     # }
     #
-    # returns true
+    # @param url [string] The URL for the web request
+    # @param options [{symbol => Object}] The parameters for the web request
+    # @return true
     def add_url(url, options = {})
       options.keys.each do |key|
         options[key.to_sym] = options.delete(key)
@@ -53,7 +55,8 @@ module Muxer
     #
     # gives a 3 second timeout to a request to https://www.google.com
     #
-    # returns true
+    # @param request [Muxer::Request] the Request to add to the multiplexer
+    # @return true
     def add_request(request)
       requests << request
       true
@@ -61,6 +64,8 @@ module Muxer
 
     # executes the actual event loop that manages creating, sending,
     # and processing the finished / timed out web requests
+    #
+    # @return [Hash] Keys are :succeeded, :failed
     def execute
       @responses = {succeeded: [], failed: [], pending: []}
       @start = Time.now

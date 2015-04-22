@@ -21,14 +21,20 @@ module Muxer
     # in as a string or a symbol.
     # The valid options are:
     # :get, :post, :head, :options, :put, :delete
+    #
+    # @param method [string, symbol] HTTP Method of the request
+    # @return true
     def method=(method)
       method = method.downcase.to_sym
 
       @method = method if [:get, :post, :head, :options, :put, :delete].include? method
+      true
     end
 
     # process! executes the web request. It cannot be called from
     # outside of an EventMachine loop.
+    #
+    # @return self
     def process!
       http = EventMachine::HttpRequest.new(url,
         connect_timeout: timeout,

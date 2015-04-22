@@ -11,25 +11,26 @@ require 'muxer/multiplexer'
 # request to continue pending even if its timeout has passed as long
 # as there is still a request waiting that has a longer timeout
 
-# Example Usage:
-
-# response = Muxer.execute do |muxer|
-#   muxer.add_url "http://www.rubydoc.info", timeout: 0.5
-#   muxer.add_url "https://www.google.com", timeout: 0.25
-# end
-
-# In the above example, Google's response could continue pending if
-# rubydoc.info had not yet returned or passed its timeout.
-
-# Returns a hash like:
-# ```ruby
-# {
-#   failed: [],
-#   completed: []
-# }
-# ```
-
 module Muxer
+  # Example Usage:
+  #
+  # response = Muxer.execute do |muxer|
+  #   muxer.add_url "http://www.rubydoc.info", timeout: 0.5
+  #   muxer.add_url "https://www.google.com", timeout: 0.25
+  # end
+  #
+  # In the above example, Google's response could continue pending if
+  # rubydoc.info had not yet returned or passed its timeout.
+  #
+  # Returns a hash like:
+  # ```ruby
+  # {
+  #   failed: [],
+  #   completed: []
+  # }
+  # ```
+  #
+  # @return [Hash]
   def self.execute
     multiplexer = Multiplexer.new
 
