@@ -4,6 +4,7 @@
 [![Coverage](https://img.shields.io/codeclimate/coverage/github/ChrisMacNaughton/muxer.svg?style=flat-square)](https://codeclimate.com/github/ChrisMacNaughton/muxer)
 [![Build](https://img.shields.io/travis-ci/ChrisMacNaughton/muxer.svg?style=flat-square)](https://travis-ci.org/ChrisMacNaughton/muxer)
 [![Dependencies](https://img.shields.io/gemnasium/ChrisMacNaughton/muxer.svg?style=flat-square)](https://gemnasium.com/ChrisMacNaughton/muxer)
+[![Docs](https://inch-ci.org/github/ChrisMacNaughton/muxer.svg?branch=master)](http://inch-ci.org/github/ChrisMacNaughton/muxer/branch/master)
 [![Downloads](https://img.shields.io/gem/dtv/muxer.svg?style=flat-square)](https://rubygems.org/gems/muxer)
 [![Tags](https://img.shields.io/github/tag/ChrisMacNaughton/muxer.svg?style=flat-square)](https://github.com/ChrisMacNaughton/muxer/tags)
 [![Releases](https://img.shields.io/github/release/ChrisMacNaughton/muxer.svg?style=flat-square)](https://github.com/ChrisMacNaughton/muxer/releases)
