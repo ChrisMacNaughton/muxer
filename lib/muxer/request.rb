@@ -16,12 +16,19 @@ module Muxer
       @error = nil
     end
 
+    # sets the HTTP method of the request as long as the method
+    # is one off the standard http methods. The method can be sent
+    # in as a string or a symbol.
+    # The valid options are:
+    # :get, :post, :head, :options, :put, :delete
     def method=(method)
       method = method.downcase.to_sym
 
       @method = method if [:get, :post, :head, :options, :put, :delete].include? method
     end
 
+    # process! executes the web request. It cannot be called from
+    # outside of an EventMachine loop.
     def process!
       http = EventMachine::HttpRequest.new(url,
         connect_timeout: timeout,
@@ -37,6 +44,7 @@ module Muxer
       self
     end
 
+    # response is the actual http request's response. 
     def response
       if @request
         @request.response

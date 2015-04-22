@@ -1,13 +1,21 @@
 module Muxer
+  # Multiplexer is the core class of Muxer that actually multiplexes
+  # web requests. Multiplexer has a lists of Muxer::Requests that will
+  # be executed and added to the completed or failed response when the
+  # timeouts have been reached.
   class Multiplexer
     attr_reader :requests
     attr_writer :timeout
+    # multiplexer = Multiplexer.new
     def initialize
       @requests = []
       @timeout = nil
     end
 
     # add_url builds a Request object and passes it to add_request
+    #
+    # m.add_url('https://www.google.com', {timeout: 3}) # gives a 3 second
+    # timeout to a request to https://www.google.com
     def add_url(url, options = {})
       options.keys.each do |key|
         options[key.to_sym] = options.delete(key)
@@ -24,6 +32,13 @@ module Muxer
     end
 
     # add_request adds a request to Multiplexer
+    #
+    # request = Muxer::Request.new
+    # request.url = 'https://www.google.com'
+    # request.timeout = 3
+    # m.add_request request
+
+    # gives a 3 second timeout to a request to https://www.google.com
     def add_request(request)
       requests << request
     end
