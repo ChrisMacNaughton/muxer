@@ -7,6 +7,7 @@ module Muxer
       @timeout = nil
     end
 
+    # add_url builds a Request object and passes it to add_request
     def add_url(url, options = {})
       options.keys.each do |key|
         options[key.to_sym] = options.delete(key)
@@ -22,10 +23,13 @@ module Muxer
       add_request request
     end
 
+    # add_request adds a request to Multiplexer
     def add_request(request)
       requests << request
     end
 
+    # executes the actual event loop that manages creating, sending,
+    # and processing the finished / timed out web requests
     def execute
       @responses = {succeeded: [], failed: [], pending: []}
       @start = Time.now
