@@ -39,7 +39,7 @@ module Muxer
       options.keys.each do |key|
         options[key.to_sym] = options.delete(key)
       end
-      options = {timeout: nil, method: :get, params: {}, redirects: nil}.merge(options)
+      options = {timeout: nil, method: :get, params: {}, redirects: nil, id: nil}.merge(options)
       timeout = 
       request = Request.new
       request.url = url
@@ -72,7 +72,7 @@ module Muxer
     #
     # @return [Hash] Keys are :succeeded, :failed
     def execute
-      @responses = {succeeded: [], failed: [], pending: []}
+      @responses = {succeeded: [], failed: [], pending: [], succeeded_by_id: {}}
       @start = Time.now
       EventMachine.run do
         requests.each do |request|
@@ -104,6 +104,9 @@ module Muxer
           @responses[:pending].delete(pending)
           if pending.error.nil?
             @responses[:succeeded] << pending
+            if pending.id
+              @responses[:succeeded_by_id][pending.id] = pending
+            end
           else
             @responses[:failed] << pending
           end

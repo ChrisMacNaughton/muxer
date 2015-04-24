@@ -13,6 +13,17 @@ RSpec.describe Muxer, "execute" do
     end
   end
 
+  it 'can make a request with an id' do
+    VCR.use_cassette('muxer/makes_a_web_request') do
+      response = Muxer.execute do |muxer|
+        muxer.add_url "http://www.rubydoc.info", {id: :rubydoc}
+      end
+
+      expect(response[:succeeded_by_id]).to be_kind_of(Array)
+      expect(response[:succeeded_by_id][:rubydoc].url).to eq('http://www.rubydoc.info')
+    end
+  end
+
   it 'can make multiple web requests' do
     VCR.use_cassette('muxer/makes_multiple_web_requests') do
       response = Muxer.execute do |muxer|
