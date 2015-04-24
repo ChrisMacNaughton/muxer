@@ -2,7 +2,8 @@ require 'spec_helper'
 
 RSpec.describe Muxer::Request do
   let(:request) { Muxer::Request.new }
-
+  let(:multiplexer) { Muxer::Multiplexer.new }
+  
   it 'has a url' do
     request.url = 'https://www.google.com'
 
@@ -26,6 +27,18 @@ RSpec.describe Muxer::Request do
     request.id = :test
 
     expect(request.id).to eq(:test)
+  end
+
+  it 'knows how long the request took' do
+    request.url = 'https://www.google.com'
+    VCR.use_cassette('muxer/request/runtime') do
+      multiplexer.add_request(request)
+      response = multiplexer.execute
+
+      response = response[:succeeded][0]
+
+      expect(response.runtime).to be_kind_of(Float)
+    end
   end
 
   describe :method do

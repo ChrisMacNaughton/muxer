@@ -21,9 +21,11 @@ module Muxer
   # @!attribute id
   #   @return [Symbol] ID for this request, the ID is arbitrary and to
   #   be assigned by the user
+  # @!attribute runtime
+  #   @return  [Float] Runtime for the request
   class Request
     attr_accessor :url, :timeout, :headers, :params, :redirects, :id
-    attr_reader :method, :completed, :error
+    attr_reader :method, :completed, :error, :runtime
 
     alias_method  :completed?, :completed
     def initialize
@@ -56,6 +58,7 @@ module Muxer
     #
     # @return self
     def process!
+      @start = Time.now
       http = EventMachine::HttpRequest.new(url,
         connect_timeout: timeout,
         inactivity_timeout: timeout,
@@ -65,8 +68,8 @@ module Muxer
         request_options
       )
 
-      @request.callback { @completed = true }
-      @request.errback { @completed = @error = true}
+      @request.callback { @completed = true; @runtime = Time.now - @start; @start = nil }
+      @request.errback { @completed = @error = true; @runtime = Time.now - @start; @start = nil}
       self
     end
 
