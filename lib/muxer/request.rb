@@ -18,8 +18,11 @@ module Muxer
   #   @return [Boolean] Is the request completed
   # @!attribute error
   #   @return [Boolean] Have we had an error?
+  # @!attribute id
+  #   @return [Symbol] ID for this request, the ID is arbitrary and to
+  #   be assigned by the user
   class Request
-    attr_accessor :url, :timeout, :headers, :params, :redirects
+    attr_accessor :url, :timeout, :headers, :params, :redirects, :id
     attr_reader :method, :completed, :error
 
     alias_method  :completed?, :completed

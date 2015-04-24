@@ -22,6 +22,12 @@ RSpec.describe Muxer::Request do
     expect(request.headers).to eq({api_key: 'test1234'})
   end
 
+  it 'has an id' do
+    request.id = :test
+
+    expect(request.id).to eq(:test)
+  end
+
   describe :method do
     it 'has a valid method' do
       request.method = 'POST'
