@@ -19,8 +19,26 @@ RSpec.describe Muxer, "execute" do
         muxer.add_url "http://www.rubydoc.info", {id: :rubydoc}
       end
 
+
+      expect(response[:requests_by_id]).to be_kind_of(Hash)
+      expect(response[:requests_by_id][:rubydoc].url).to eq('http://www.rubydoc.info')
+
       expect(response[:succeeded_by_id]).to be_kind_of(Hash)
       expect(response[:succeeded_by_id][:rubydoc].url).to eq('http://www.rubydoc.info')
+    end
+  end
+
+  it 'has an id with a failed request' do
+    VCR.use_cassette('muxer/can_have_a_request_fail', :record => :new_episodes) do
+      response = Muxer.execute do |muxer|
+        muxer.add_url "https://www.thisisabadexampledomain.com", {id: :bad}
+      end
+
+      expect(response[:failed]).to be_kind_of(Array)
+      expect(response[:failed].count).to eq(1)
+
+      expect(response[:requests_by_id]).to be_kind_of(Hash)
+      expect(response[:requests_by_id][:bad].url).to eq('https://www.thisisabadexampledomain.com')
     end
   end
 

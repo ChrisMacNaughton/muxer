@@ -72,11 +72,14 @@ module Muxer
     #
     # @return [Hash] Keys are :succeeded, :failed
     def execute
-      @responses = {succeeded: [], failed: [], pending: [], succeeded_by_id: {}}
+      @responses = {succeeded: [], failed: [], pending: [], succeeded_by_id: {}, requests_by_id: {}}
       @start = Time.now
       EventMachine.run do
         requests.each do |request|
           @responses[:pending] << request.process!
+          if request.id
+            @responses[:requests_by_id][request.id] = request
+          end
         end
 
         EM::PeriodicTimer.new(0.001) do
