@@ -19,7 +19,7 @@ RSpec.describe Muxer, "execute" do
         muxer.add_url "http://www.rubydoc.info", {id: :rubydoc}
       end
 
-      expect(response[:succeeded_by_id]).to be_kind_of(Array)
+      expect(response[:succeeded_by_id]).to be_kind_of(Hash)
       expect(response[:succeeded_by_id][:rubydoc].url).to eq('http://www.rubydoc.info')
     end
   end
